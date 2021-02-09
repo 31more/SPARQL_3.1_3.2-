@@ -1,6 +1,8 @@
-#Список фильмов сценариста  рекомендованного фильма (фильм: "The Godfather Part II ", сценарист Mario Puzo)
-SELECT ?item ?itemLabel 
-WHERE {
-  ?item wdt:P58 wd:Q182870;        
-  SERVICE wikibase:label { bd:serviceParam wikibase:language "[AUTO_LANGUAGE],en". }
-} GROUP BY ?item ?itemLabel 
+#11:  СЃРїРёСЃРѕРє С„РёР»СЊРјРѕРІ СЃС†РµРЅР°СЂРёСЃС‚Р° СЂРµРєРѕРјРµРЅРґРѕРІР°РЅРЅРѕРіРѕ С„РёР»СЊРјР°
+SELECT ?films ?filmsLabel WHERE {
+  wd:Q184768 wdt:P58 ?screenwriter .
+  ?films wdt:P31 wd:Q11424;
+    wdt:P58 ?screenwriter .
+  FILTER(?films != wd:Q184768)
+  SERVICE wikibase:label { bd:serviceParam wikibase:language "[AUTO_LANGUAGE],ru". }
+}
